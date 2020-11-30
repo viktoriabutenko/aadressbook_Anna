@@ -14,11 +14,11 @@ class UI {
         contacts.appendChild(tr);
     }
 
-    alertMessage(message) {
+    alertMessage(message, style) {
         // create div for alert message
         const div = document.createElement('div');
         // add class to div
-        div.className = "alert";
+        div.className = `alert ${style}`;
         // create string value of message for div
         const text = document.createTextNode(message);
         // insert text into div
