@@ -38,4 +38,9 @@ class UI {
             document.querySelector(".alert").remove();
         }, 5000);
     }
+
+    deletePersonFromTable(eventElement) {
+        const personContact = eventElement.parentElement.parentElement.parentElement;
+        personContact.remove();
+    }
 }

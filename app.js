@@ -5,6 +5,8 @@ const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
 
 // define event listeners
+// page reload event - get data from Local Storage
+document.addEventListener('DOMContentLoaded', getContacts);
 // add contact to table - submit button
 form.addEventListener('submit', addContact);
 // delete contact from table - link click
@@ -53,4 +55,25 @@ function deleteContact(e) {
     e.preventDefault();
 }
 
+//  getContacts
+function getContacts() {
+    // create new LS object
+    const ls = new LS();
+    // create new ui object
+    const ui = new UI();
+    // get contacts from LS
+    const persons = ls.getContacts();
+    // get each contact from Local Storage and transform to Person object
+    persons.forEach(function (person) {
+        const personData = new Person(
+            person['firstName'],
+            person['lastName'],
+            person['city'],
+            person['street'],
+            person['postcode'],
+            person['phone']);
+        // create UI object from HTML table row
+        ui.addPersonToTable(personData);
+    });
+}
 
