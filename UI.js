@@ -9,6 +9,11 @@ class UI {
                         <td>${person.street}</td>
                         <td>${person.postcode}</td>
                         <td>${person.phone}</td>
+                        <td>
+                        <a href="#">
+                        <i class="fas fa-backspace"></i>
+                        </a>
+                        </td>
         `;
         // append tr to table
         contacts.appendChild(tr);
