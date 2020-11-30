@@ -48,10 +48,22 @@ function addContact(e) {
 function deleteContact(e) {
     // create new ui object
     const ui = new UI();
+    // create new LS object
+    const ls = new LS()
     // delete contact
+    const deleteBtn = e.target;
+    const firstname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    const lastname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    // delete from UI
     ui.deletePersonFromTable (e.target);
+    // delete from LS
+    const isDeleted = ls.deleteContact(firstname, lastname);
     // set alert
-    ui.alertMessage("Person contact is deleted", "ok");
+    if (isDeleted) {
+        ui.alertMessage("Person contact is deleted", 'ok');
+    } else {
+        ui.alertMessage("Problem with deleting data", 'problem');
+    }
     e.preventDefault();
 }
 
