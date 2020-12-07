@@ -42,4 +42,7 @@ class LS {
         // return true
         return true;
     }
+    clearContacts () {
+       localStorage.clear();
+    }
 }

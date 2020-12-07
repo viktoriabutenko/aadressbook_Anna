@@ -3,6 +3,7 @@
 // app data html elements
 const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
+const clearBtn = document.querySelector('#clear-contacts');
 
 // define event listeners
 // page reload event - get data from Local Storage
@@ -89,5 +90,19 @@ function getContacts() {
         // create UI object from HTML table row
         ui.addPersonToTable(personData);
     });
+}
+
+// clearContacts
+function clearContacts(e){
+    contacts.innerHTML = '';
+    const ui = new UI();
+    ui.clearContacts();
+    const ls = new LS ();
+    const isCleared = ls.clearContacts()
+    {
+        ui.alertMessage("Contacts are cleared", 'ok')
+    } else {
+        ui.alertMessage("Some problems, sorry", 'problem')
+    }
 }
 
