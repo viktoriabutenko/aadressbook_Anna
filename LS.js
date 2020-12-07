@@ -3,7 +3,7 @@ class LS {
         // get person data from Local Storage
         let persons;
         // if data not exists
-        if (localStorage.getItem('persons') === null){
+        if(localStorage.getItem('persons') === null){
             persons = [];
         } else {
             // data is exists
@@ -14,11 +14,11 @@ class LS {
         localStorage.setItem('persons', JSON.stringify(persons));
     }
 
-    getContacts () {
+    getContacts() {
         // get person data from Local Storage
         let persons;
         // if data not exists
-        if (localStorage.getItem('persons') === null){
+        if(localStorage.getItem('persons') === null){
             persons = [];
         } else {
             // data is exists
@@ -28,12 +28,12 @@ class LS {
         return persons;
     }
 
-    deleteContact(firstname,lastname) {
+    deleteContact(firstname, lastname) {
         // get all data from LS
         const persons = this.getContacts();
         // controll each contact
-        persons.forEach(function (person, index){
-            if (person.firstName === firstname && person.lastName === lastname){
+        persons.forEach(function (person, index) {
+            if (person.firstName === firstname && person.lastName === lastname) {
                 persons.splice(index, 1);
             }
         });
@@ -42,7 +42,9 @@ class LS {
         // return true
         return true;
     }
-    clearContacts () {
-       localStorage.clear();
+
+    clearContacts() {
+        localStorage.clear();
+        return true;
     }
 }

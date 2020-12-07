@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', getContacts);
 form.addEventListener('submit', addContact);
 // delete contact from table - link click
 contacts.addEventListener('click', deleteContact);
+// clear all contacts from table
+clearBtn.addEventListener('click', clearContacts);
+
 
 // project functions
 // addContact
@@ -27,8 +30,8 @@ function addContact(e) {
     // create new ui object
     const ui = new UI();
 
-    //create new LS object
-    const ls = new LS()
+    // create new Local Storage object
+    const ls = new LS();
 
     // control form data
     if (firstName === "" | lastName === "" | city === "" | street === "" | postCode === "" | phone === "") {
@@ -51,34 +54,34 @@ function addContact(e) {
 function deleteContact(e) {
     // create new ui object
     const ui = new UI();
-    // create new LS object
-    const ls = new LS()
+    // create new Local Storage object
+    const ls = new LS();
     // delete contact
     const deleteBtn = e.target;
     const firstname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-    const lastname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    const lastname = deleteBtn.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
     // delete from UI
-    ui.deletePersonFromTable (e.target);
+    ui.deletePersonFromTable(e.target);
     // delete from LS
     const isDeleted = ls.deleteContact(firstname, lastname);
     // set alert
-    if (isDeleted) {
-        ui.alertMessage("Person contact is deleted", 'ok');
+    if(isDeleted){
+        ui.alertMessage("Person contact is deleted", "ok");
     } else {
-        ui.alertMessage("Problem with deleting data", 'problem');
+        ui.alertMessage("Problem with deleting data", "problem");
     }
     e.preventDefault();
 }
 
-//  getContacts
+// getContacts
 function getContacts() {
-    // create new LS object
+    // create new Local Storage object
     const ls = new LS();
     // create new ui object
     const ui = new UI();
-    // get contacts from LS
+    // get constacts from LS
     const persons = ls.getContacts();
-    // get each contact from Local Storage and transform to Person object
+    // get each contact from LS and transform to Person object
     persons.forEach(function (person) {
         const personData = new Person(
             person['firstName'],
@@ -87,22 +90,26 @@ function getContacts() {
             person['street'],
             person['postcode'],
             person['phone']);
-        // create UI object from HTML table row
+        // create UI object for html table row
         ui.addPersonToTable(personData);
     });
 }
 
 // clearContacts
-function clearContacts(e){
-    contacts.innerHTML = '';
+function clearContacts(e) {
+    // create new ui object
     const ui = new UI();
+    // clear contacts from UI
     ui.clearContacts();
-    const ls = new LS ();
-    const isCleared = ls.clearContacts()
-    {
-        ui.alertMessage("Contacts are cleared", 'ok')
+    // create new Local Storage object
+    const ls = new LS();
+    // clear contacts from LS
+    const isCleared = ls.clearContacts();
+    if (isCleared) {
+        // add alert about it
+        ui.alertMessage("Contacts are cleared", "ok");
     } else {
-        ui.alertMessage("Some problems, sorry", 'problem')
+        ui.alertMessage("Some problems, sorry", "problem");
     }
-}
 
+}

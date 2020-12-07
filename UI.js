@@ -10,9 +10,9 @@ class UI {
                         <td>${person.postcode}</td>
                         <td>${person.phone}</td>
                         <td>
-                        <a href="#">
-                        <i class="fas fa-backspace"></i>
-                        </a>
+                            <a href="#">
+                                <i class="fas fa-backspace"></i>
+                            </a>
                         </td>
         `;
         // append tr to table
@@ -44,7 +44,7 @@ class UI {
         personContact.remove();
     }
 
-    clearInputs(){
+    clearInputs() {
         document.querySelector('#first_name').value = '';
         document.querySelector('#last_name').value = '';
         document.querySelector('#city').value = '';
@@ -52,7 +52,8 @@ class UI {
         document.querySelector('#postcode').value = '';
         document.querySelector('#phone').value = '';
     }
-    clearContacts (){
 
+    clearContacts() {
+        contacts.innerHTML = '';
     }
 }
