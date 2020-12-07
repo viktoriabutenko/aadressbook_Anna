@@ -40,6 +40,8 @@ function addContact(e) {
         // save person data to Local Storage
         ls.saveContact(person);
         ui.alertMessage("Added contact to address book!", "ok");
+        // clear form inputs
+        ui.clearInputs();
     }
     e.preventDefault();
 }

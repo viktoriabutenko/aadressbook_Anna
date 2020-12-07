@@ -43,4 +43,13 @@ class UI {
         const personContact = eventElement.parentElement.parentElement.parentElement;
         personContact.remove();
     }
+
+    clearInputs(){
+        document.querySelector('#first_name').value = '';
+        document.querySelector('#last_name').value = '';
+        document.querySelector('#city').value = '';
+        document.querySelector('#street').value = '';
+        document.querySelector('#postcode').value = '';
+        document.querySelector('#phone').value = '';
+    }
 }
